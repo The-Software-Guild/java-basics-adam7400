@@ -33,6 +33,12 @@ public class Rock {
                 ties++;
             }
         }
+        printScores(userWins, computerWins, ties);
+
+
+    }
+
+    private static void printScores(int userWins, int computerWins, int ties) {
         System.out.printf("%nFinal scores%n");
         System.out.println("Player: " + userWins);
         System.out.println("Computer: " + computerWins);
@@ -45,8 +51,6 @@ public class Rock {
         } else {
             System.out.println("It's a TIE!");
         }
-
-
     }
 
     private static int noOfRounds() {
