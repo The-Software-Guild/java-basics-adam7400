@@ -13,20 +13,29 @@ public class Rock {
         int n = noOfRounds();
 
         for (int i = 0; i < n; i++) {
+            System.out.println("Round " + (i+1));
             int user = userChoice();
             int computer = computerChoice();
+            printChoice(user);
+            System.out.print(" vs. ");
+            printChoice(computer);
+
             int outcome = referee(user, computer);
 
             if (outcome == 1) {
+                System.out.printf("%nPlayer wins%n");
                 userWins++;
             } else if (outcome == 2) {
+                System.out.printf("%nComputer wins%n");
                 computerWins++;
             } else {
+                System.out.printf("%nTie%n");
                 ties++;
             }
         }
-        System.out.println("Player wins: " + userWins);
-        System.out.println("Computer wins: " + computerWins);
+        System.out.printf("%nFinal scores%n");
+        System.out.println("Player: " + userWins);
+        System.out.println("Computer: " + computerWins);
         System.out.println("Ties " + ties);
 
         if (userWins > computerWins) {
@@ -56,7 +65,7 @@ public class Rock {
 
     private static int userChoice() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Please choose your weapon - 1 (Rock), 2 (Paper), 3 (Scissors): ");
+        System.out.print("Please choose your weapon - 1 (Rock), 2 (Paper), 3 (Scissors): ");
         return scanner.nextInt();
     }
 
@@ -68,10 +77,21 @@ public class Rock {
     private static int referee(int p1, int p2) {
         if (p1 == p2) {
             return 0;
-        } else if (p1 == 1 && p2 == 2 || p1 == 2 && p2 == 3) {
+        } else if (p1 == 1 && p2 == 2 || p1 == 2 && p2 == 3 || p1 == 3 && p2 == 1) {
             return 2;
         } else {
             return 1;
+        }
+    }
+    private static void printChoice(int c){
+        if (c==1){
+            System.out.print("ROCK");
+        }
+        else if (c==2){
+            System.out.print("PAPER");
+        }
+        else{
+            System.out.print("SCISSORS");
         }
     }
 }
