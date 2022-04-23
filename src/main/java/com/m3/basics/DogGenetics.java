@@ -25,7 +25,7 @@ public class DogGenetics {
         for(int i = 0; i < breeds.length-1; i++){
             int x = randomizer.nextInt(bound);
             System.out.printf("%s %d", breeds[i], x);
-            System.out.println("%");
+            System.out.println("% ");
             bound -= x;
         }
         System.out.printf("%s %d", breeds[4], bound);
