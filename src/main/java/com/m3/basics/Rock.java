@@ -5,35 +5,46 @@ import java.util.Scanner;
 
 public class Rock {
     public static void main(String[] args) {
+        Scanner userInput = new Scanner(System.in);
         int userWins = 0;
         int computerWins = 0;
         int ties = 0;
+        boolean gameOn = true;
 
         System.out.printf("Welcome to ROCK PAPER SCISSORZ!%n%n");
-        int n = noOfRounds();
 
-        for (int i = 0; i < n; i++) {
-            System.out.println("Round " + (i+1));
-            int user = userChoice();
-            int computer = computerChoice();
-            printChoice(user);
-            System.out.print(" vs. ");
-            printChoice(computer);
+        while(gameOn) {
+            int n = noOfRounds();
 
-            int outcome = referee(user, computer);
+            for (int i = 0; i < n; i++) {
+                System.out.println("Round " + (i + 1));
+                int user = userChoice();
+                int computer = computerChoice();
+                printChoice(user);
+                System.out.print(" vs. ");
+                printChoice(computer);
 
-            if (outcome == 1) {
-                System.out.printf("%nPlayer wins%n");
-                userWins++;
-            } else if (outcome == 2) {
-                System.out.printf("%nComputer wins%n");
-                computerWins++;
-            } else {
-                System.out.printf("%nTie%n");
-                ties++;
+                int outcome = referee(user, computer);
+
+                if (outcome == 1) {
+                    System.out.printf("%nPlayer wins%n");
+                    userWins++;
+                } else if (outcome == 2) {
+                    System.out.printf("%nComputer wins%n");
+                    computerWins++;
+                } else {
+                    System.out.printf("%nTie%n");
+                    ties++;
+                }
+            }
+            printScores(userWins, computerWins, ties);
+            System.out.println("Do you want to play again? (1 - yes, 0 - no): ");
+            int x = userInput.nextInt();
+            if (x==0){
+                gameOn = false;
             }
         }
-        printScores(userWins, computerWins, ties);
+        System.out.println("Thanks for playing. Goodbye!");
 
 
     }
